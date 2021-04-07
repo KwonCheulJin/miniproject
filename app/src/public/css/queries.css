@@ -1,0 +1,119 @@
+@media (min-width: 1200px) and (max-width: 2560px) {
+  .space {
+    width: 1130px;
+  }
+
+  .form {
+    width: 560px;
+    height: 400px;
+  }
+
+  .parking-place h3,
+  .car-num-form h3 {
+    font-size: 36px;
+  }
+
+  .parking-place p {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  .car-num-form .inputBox input {
+    width: 400px;
+    padding: 10px 20px;
+    font-size: 32px;
+  }
+
+  .car-num-form .inputBox input::placeholder {
+    position: absolute;
+    top: 8px;
+    color: #ffffff;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1199px) {
+  .space {
+    max-width: 800px;
+  }
+
+  .form {
+    width: 450px;
+    height: 350px;
+  }
+
+  .parking-place h3,
+  .car-num-form h3 {
+    font-size: 28px;
+  }
+
+  .parking-place p {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  .car-num-form .inputBox input {
+    width: 300px;
+    padding: 10px 20px;
+    font-size: 28px;
+  }
+
+  .car-num-form .inputBox input::placeholder {
+    position: absolute;
+    top: 10px;
+    color: #ffffff;
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+  .space {
+    max-width: 620px;
+  }
+
+  .form {
+    width: 425px;
+    height: 325px;
+  }
+
+  .car-num-form .inputBox p {
+    font-size: 1.25rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .space {
+    max-width: 400px;
+  }
+
+  .form {
+    width: 375px;
+    height: 300px;
+  }
+
+  .car-num-form .inputBox p {
+    font-size: 1.25rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 499px) {
+  .form {
+    width: 300px;
+    height: 300px;
+  }
+
+  .parking-place {
+    margin-top: 15px;
+  }
+
+  .car-num-form .inputBox p {
+    font-size: 1.25rem;
+    padding: 5px 10px;
+  }
+
+  .car-num-form .inputBox input {
+    width: 200px;
+  }
+}

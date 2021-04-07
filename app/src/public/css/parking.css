@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+/*------- container ---------*/
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.container .section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  background-blend-mode: multiply;
+}
+
+.container .section:nth-child(1) {
+  background: url(parking.jpg) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container .section:nth-child(2) {
+  background-color: #a4a4a4;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container .section:nth-child(3) {
+  background: url(parking.jpg) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container .section .content {
+  padding-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .section .content h2 {
+  color: #f5f5f5;
+  font-weight: 400;
+  font-size: 3rem;
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+/*------- 주차장 입구 ---------*/
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30rem;
+  min-height: 17.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.parking-place {
+  margin-top: 30px;
+}
+
+.parking-place p {
+  position: relative;
+  width: 10rem;
+  margin: 1rem auto;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.car-num-form {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.parking-place h3,
+.car-num-form h3 {
+  position: relative;
+  margin-top: 1.25rem;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.car-num-form .inputBox {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.car-num-form .inputBox input {
+  width: 15rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.car-num-form .inputBox input::placeholder {
+  position: absolute;
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.car-num-form .inputBox p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/*------- 주차 공간 ---------*/
+
+.space {
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.space div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: 8.5rem;
+  height: 40px;
+  font-size: 16px;
+}
+
+.space .check {
+  width: 20px;
+  height: 16px;
+}
+
+/*------- 주차장 출구 ---------*/
+
+.third-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.third-container .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  min-height: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.third-container .card:nth-child(2) {
+  display: none;
+}
+
+.third-container .card:nth-child(1).active {
+  display: none;
+}
+.third-container .card:nth-child(2).active {
+  display: flex;
+}
+
+.calculater {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.calculater .inputBox {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.calculater .inputBox input {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.calculater .inputBox input::placeholder {
+  position: absolute;
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.calculater .inputBox p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 8px 8px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.calculater h3 {
+  position: relative;
+  margin-top: 1.25rem;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
