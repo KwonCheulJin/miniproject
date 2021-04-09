@@ -1,4 +1,5 @@
-'use strict';
+"use strict";
+
 // 라우터
 
 const express = require("express");
@@ -6,13 +7,12 @@ const router = express.Router();
 const ctrl = require("./ctrl");
 
 
-
-router.get("/", (req, res) => {
-  res.render("parking", { data: "00" });
-});
-
+router.get("/", ctrl.output.insert);
 
 router.post("/insert", ctrl.process.insert);
+router.post("/signup", ctrl.process.signup);
+router.post("/out", ctrl.process.outCar);
+router.post("/discount", ctrl.process.discount);
 
 
 

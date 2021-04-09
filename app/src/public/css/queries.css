@@ -3,7 +3,7 @@
     width: 1130px;
   }
 
-  .form {
+  .first-form {
     width: 560px;
     height: 400px;
   }
@@ -37,7 +37,7 @@
     max-width: 800px;
   }
 
-  .form {
+  .first-form {
     width: 450px;
     height: 350px;
   }
@@ -71,7 +71,7 @@
     max-width: 620px;
   }
 
-  .form {
+  .first-form {
     width: 425px;
     height: 325px;
   }
@@ -87,7 +87,7 @@
     max-width: 400px;
   }
 
-  .form {
+  .first-form {
     width: 375px;
     height: 300px;
   }
@@ -99,7 +99,7 @@
 }
 
 @media (max-width: 499px) {
-  .form {
+  .first-form {
     width: 300px;
     height: 300px;
   }
@@ -115,5 +115,42 @@
 
   .car-num-form .inputBox input {
     width: 200px;
+  }
+
+  .container .section .content h2 {
+    font-size: 2rem;
+  }
+
+  .signUp p {
+    margin: 14px auto;
+    padding: 5px 10px;
+  }
+
+  .popup .modal-content {
+    width: 300px;
+    height: 350px;
+  }
+
+  .popup .close-btn {
+    font-size: 25px;
+  }
+
+  .modal-content h2 {
+    top: 8%;
+    font-size: 28px;
+  }
+
+  .modal-content .inputBox input {
+    width: 200px;
+  }
+
+  .modal-content .inputBox p {
+    margin: 10px auto;
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+
+  .popup .modal-content form {
+    top: 15%;
   }
 }

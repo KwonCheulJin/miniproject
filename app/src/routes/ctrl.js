@@ -1,46 +1,57 @@
 'use strict';
 
+const moment = require("moment");
+
 // 컨트롤러
 
 const output = {
   insert: (req, res) => {
-    res.render("parking", { data: "00" });
-  },
-
-  delete: (req, res) => {
     res.render("parking");
-  },
-
-  // logout: (req, res) => {
-  //   req.session.destroy((err) => {
-  //     res.redirect("/login");
-  //   })
-  // },
-
-  // register: (req, res) => {
-  //   res.render("home/register");
-  // }
+  }
 };
 
 
 
 const process = {
   insert: (req, res) => {
-    console.log(req.body.carNumber);
+    console.log(req.body.carNumber)
+    console.log(moment(req.body.dateTime).format("YYYY-MM-DD HH:mm:ss"))
     if (req.body) {
       return res.json({
         success: true
       });
     }
   },
-  // register: async (req, res) => {
-  //   const user = new User(req.body);
-  //   const response = await user.register();
-  //   return res.json(response);
-  // },
+  signup: (req, res) => {
+    console.log(req.body.seasonCarNumber)
+    console.log(req.body.seasonName)
+    console.log(moment(req.body.seasonPeriod).format("YYYY-MM-DD"))
+    if (req.body) {
+      return res.json({
+        success: true
+      });
+    }
+  },
+  outCar: (req, res) => {
+    console.log(req.body.outCarNum)
+    console.log(moment(req.body.outTime).format("YYYY-MM-DD HH:mm:ss"))
+    if (req.body) {
+      return res.json({
+        success: true
+      });
+    }
+  },
+  discount: (req, res) => {
+    console.log(req.body)
+    if (req.body) {
+      return res.json({
+        success: true
+      });
+    }
+  },
 };
 
 module.exports = {
   output,
-  process
+  process,
 }
