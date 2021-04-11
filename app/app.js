@@ -23,11 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const routes = require("./src/routes");
 app.use("/", routes);
 
-// app.get("/", (req, res) => {
-//   res.render("parking", { data: "00" });
-// })
-
-
 app.listen(port, () => {
   console.log("Server Start!")
 })

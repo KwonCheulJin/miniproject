@@ -15,13 +15,12 @@ const firstCard = document.querySelector(".card:nth-child(1)"),
 //-------주차장 출구 버튼 ---------
 
 nextBtn.addEventListener("click", () => {
-  if (outCarNum.value === "" && outTime.value === "") {
-    alert("차랑변호와 출차시간을 입력해주세요")
+  if (outTime.value === "") {
+    alert("출차시간을 입력해주세요")
   } else {
     secondCard.classList.add("active");
     firstCard.classList.add("active");
   }
-
 });
 
 dcBtn.addEventListener("click", () => {
@@ -29,22 +28,15 @@ dcBtn.addEventListener("click", () => {
   secondCard.classList.remove("active");
 })
 
-calBtn.addEventListener("click", () => {
-  if (result.value === "") {
-    alert("결제금액이 없습니다.")
-  } else {
-    firstCard.classList.remove("active");
-    firstScroll.scrollIntoView({ behavior: "smooth" })
-  }
-});
+
 
 // --------- 출차 차량 확인 ------
 nextBtn.addEventListener("click", outCar);
 
 function outCar() {
   const req = {
-    outCarNum: outCarNum.value,
-    outTime: outTime.value
+    carNum: carNumData[carNumData.length - 1],
+    outTime: outTime.value,
   }
   fetch("/out", {
     method: "POST",
@@ -55,11 +47,15 @@ function outCar() {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.success) {
-        console.log(JSON.stringify(req));
-      } else {
+      if (res.season) {
         alert(res.msg);
+        secondCard.classList.remove("active");
+        firstCard.classList.remove("active");
+        outCarNum.innerHTML = "CarNumber"
+        outTime.value = ""
+        firstScroll.scrollIntoView({ behavior: "smooth" })
       }
+      console.log(res);
     })
     .catch((err) => {
       console.error("로그인 중 에러 발생");
@@ -67,6 +63,7 @@ function outCar() {
 }
 
 // --------- 할인 파트 ------
+const reAmount = [];
 
 dcBtn.addEventListener("click", () => {
   const val = dcSelect.options[dcSelect.selectedIndex].value;
@@ -79,6 +76,7 @@ function discount(val) {
   val = dcSelect.options[dcSelect.selectedIndex].value;
   console.log(val);
   const req = {
+    carNum: carNumData[carNumData.length - 1],
     dcSelect: val
   }
   console.log(req)
@@ -91,13 +89,39 @@ function discount(val) {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.success) {
-        console.log(JSON.stringify(req));
-      } else {
-        alert(res.msg);
+      if (res.merit) {
+        result.innerHTML = res.result
+        reAmount.push(res.result)
+      } else if (res.person) {
+        result.innerHTML = res.result
+        reAmount.push(res.result)
+      } else if (res.transfer) {
+        result.innerHTML = res.result
+        reAmount.push(res.result)
+      } else if (res.market) {
+        result.innerHTML = res.result
+        reAmount.push(res.result)
       }
+      result.innerHTML = res.result
+      reAmount.push(res.result)
     })
     .catch((err) => {
       console.error("로그인 중 에러 발생");
     });
+}
+
+// --------- 결제 파트 ------
+calBtn.addEventListener("click", payment);
+
+function payment() {
+  const outCar = carNumData[carNumData.length - 1];
+  const pay = reAmount[reAmount.length - 1];
+  console.log(outCar, pay)
+  thirdCard.classList.remove("active2");
+  firstCard.classList.remove("active");
+  outCarNum.innerHTML = "CarNumber"
+  outTime.value = ""
+  alert(`${pay}가 결제되었습니다. ${outCar}님 이용해주셔서 감사합니다.`)
+  firstScroll.scrollIntoView({ behavior: "smooth" })
+  result.innerHTML = "Payment"
 }

@@ -10,7 +10,7 @@ const ctrl = require("./ctrl");
 router.get("/", ctrl.output.insert);
 
 router.post("/insert", ctrl.process.insert);
-router.post("/signup", ctrl.process.signup);
+router.post("/signup", ctrl.process.signUp);
 router.post("/out", ctrl.process.outCar);
 router.post("/discount", ctrl.process.discount);
 

@@ -7,37 +7,51 @@ class User {
     this.body = body;
   }
 
-  async login(req, res) {
+  async insert() {
     const client = this.body
-    // console.log(client);
-    // console.log(id);
     try {
-      const { id, pw } = await UserStorage.getUserInfo(client.id);
-
-      if (id) {
-        if (id === client.id && pw === client.pw) {
-          req.session.is_logined = true;
-          req.session.nickname = client.id;
-          return { success: true };
-        }
-        return { success: false, msg: "비밀번호가 틀렸습니다." };
-      }
-    } catch (err) {
-      return { success: false, msg: "존재하지 않는 아이디입니다." };
-    }
-
-  }
-
-  async register() {
-    const client = this.body;
-    try {
-      const response = await UserStorage.save(client);
+      const response = await UserStorage.insert(client);
       return response;
     } catch (err) {
-      return { success: false, msg: "이미 등록된 아이디입니다." };
+      return { success: false, msg: err }
     }
   }
 
+  async signUp() {
+    const client = this.body;
+    console.log(client);
+    try {
+      const response = await UserStorage.signUp(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err }
+    }
+  }
+
+  async outCar() {
+    const client = this.body
+    try {
+      const response = await UserStorage.outCar(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err }
+    }
+  }
+
+
+  async discount() {
+    const client = this.body
+    try {
+      const response = await UserStorage.discount(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err }
+    }
+  }
 }
+
+
+
+
 
 module.exports = User;

@@ -1,7 +1,7 @@
 'use strict';
 
 const moment = require("moment");
-
+const User = require('../models/User');
 // 컨트롤러
 
 const output = {
@@ -11,44 +11,36 @@ const output = {
 };
 
 
-
 const process = {
-  insert: (req, res) => {
-    console.log(req.body.carNumber)
-    console.log(moment(req.body.dateTime).format("YYYY-MM-DD HH:mm:ss"))
-    if (req.body) {
-      return res.json({
-        success: true
-      });
-    }
+  // ------ 주차장 입구 등록 ------
+  insert: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.insert();
+    console.log(response);
+    return res.json(response);
   },
-  signup: (req, res) => {
-    console.log(req.body.seasonCarNumber)
-    console.log(req.body.seasonName)
-    console.log(moment(req.body.seasonPeriod).format("YYYY-MM-DD"))
-    if (req.body) {
-      return res.json({
-        success: true
-      });
-    }
+  // ------ 정기권 등록 ----------
+  signUp: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.signUp();
+    console.log(response);
+    return res.json(response);
   },
-  outCar: (req, res) => {
-    console.log(req.body.outCarNum)
-    console.log(moment(req.body.outTime).format("YYYY-MM-DD HH:mm:ss"))
-    if (req.body) {
-      return res.json({
-        success: true
-      });
-    }
+  // ------ 주차장 출구 등록 -------
+  outCar: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.outCar();
+    console.log(response);
+    return res.json(response);
   },
-  discount: (req, res) => {
-    console.log(req.body)
-    if (req.body) {
-      return res.json({
-        success: true
-      });
-    }
+  // ------ 할인코드 ----------
+  discount: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.discount();
+    console.log(response);
+    return res.json(response);
   },
+
 };
 
 module.exports = {

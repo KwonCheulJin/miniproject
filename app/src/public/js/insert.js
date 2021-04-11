@@ -31,42 +31,34 @@ closeBtn.addEventListener("click", modalToggl);
 
 enterBtn.addEventListener("click", insert);
 
-//----- 차량번호 등록 -------
-
-enterBtn.addEventListener("click", () => {
-  if (carNumber.value === "") {
-    alert("차량 번호를 등록하세요")
-  } else {
-    secondScroll.scrollIntoView({ behavior: 'smooth' })
-    carNumber.value = '';
-    changeP.forEach((value) => {
-      value.classList.add("car-in");
-    })
-  }
-})
-
 //------ 출차, 입차 변경에 따라 차량번호 등록 ------
 
-const carNumData = localStorage.getItem("carNumber")
+const carNumData = [];
 
 insertBtn.forEach(example => example.addEventListener("click", (event) => {
+  console.log(carNumData);
   const enter = event.target
-  if (enter.value === "입차") {
-    document.querySelector(".car-in").innerHTML = `${carNumData}`
-  } else {
-    document.querySelector(".car-in").innerHTML = ""
+  if (enter) {
+    document.querySelector(".car-in").innerHTML = `${carNumData[carNumData.length - 1]}`
   }
 }));
 
+insertBtn.forEach(example => example.addEventListener("click", (event) => {
+  const enter = event.target
+  if (enter.value === "출차") {
+    document.querySelector(".car-in").innerHTML = "";
+    outCarNum.innerHTML = `${carNumData[carNumData.length - 1]}`
+  }
+
+}));
 
 //------ 차량번호전달 ------
 
 function insert() {
   const req = {
-    carNumber: carNumber.value,
+    carNum: carNumber.value,
     inTime: new Date()
   };
-  localStorage.setItem("carNumber", carNumber.value);
   console.log(req)
   fetch("/insert", {
     method: "POST",
@@ -77,28 +69,32 @@ function insert() {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.success) {
-        console.log(JSON.stringify(req));
-      } else {
+      if (res.season) {
         alert(res.msg);
+        carNumData.push(res.seasonCarNum);
+        secondScroll.scrollIntoView({ behavior: 'smooth' })
+        carNumber.value = '';
+        changeP.forEach((value) => {
+          value.classList.add("car-in");
+        })
+      } else if (res.success) {
+        alert(res.msg);
+        carNumData.push(res.carNum);
+        secondScroll.scrollIntoView({ behavior: 'smooth' })
+        carNumber.value = '';
+        changeP.forEach((value) => {
+          value.classList.add("car-in");
+        })
+      } else if (res.empty) {
+        alert(res.emptyMsg)
+      } else {
+        alert(res.msg)
       }
     })
     .catch((err) => {
-      console.error("로그인 중 에러 발생");
+      console.error("등록 중 에러 발생");
     });
 }
-
-// ---------- 회원가입 ---------
-
-modalSignupBtn.addEventListener("click", () => {
-  if (seasonCarNum.value === "") {
-    alert("차량 번호를 등록하세요");
-  } else if (seasonName.value === "") {
-    alert("이름을 등록하세요");
-  } else if (seasonPeriod.value === "") {
-    alert("기간을 선택하세요");
-  } else modalSignupBtn.addEventListener("click", modalToggl);
-})
 
 // ---------- 회원가입 전송 ---------
 
@@ -106,12 +102,10 @@ modalSignupBtn.addEventListener("click", signUp);
 
 function signUp() {
   const req = {
-    seasonCarNumber: seasonCarNum.value,
-    seasonName: seasonName.value,
+    seasonCarNum: seasonCarNum.value,
+    seasonUserName: seasonName.value,
     seasonPeriod: seasonPeriod.value
   };
-  // localStorage.setItem("seasonCarNumber", seasonCarNum.value);
-  console.log(req)
   fetch("/signup", {
     method: "POST",
     headers: {
@@ -122,10 +116,11 @@ function signUp() {
     .then((res) => res.json())
     .then((res) => {
       if (res.success) {
-        console.log(JSON.stringify(req));
+        alert("회원가입이 완료되었습니다.")
       } else {
         alert(res.msg);
       }
+      modalSignupBtn.addEventListener("click", modalToggl)
     })
     .catch((err) => {
       console.error("로그인 중 에러 발생");
