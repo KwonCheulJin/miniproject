@@ -114,7 +114,31 @@ cashBtn.addEventListener("click", () => {
   paymentResult.appendChild(input);
   paymentBtn.appendChild(calBtn);
   paymentBtn.removeChild(calBtn2);
+  paymentCashSave();
 })
+
+function paymentCashSave() {
+  const req = {
+    method: cashBtn.id,
+    outTime: outTimeOutput.value,
+    dcSelect: dcSelect.options[dcSelect.selectedIndex].value,
+  }
+  console.log(req)
+  fetch("/paymentcash", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(req),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) console.log("OK");
+    })
+    .catch((err) => {
+      console.error("로그인 중 에러 발생");
+    });
+}
 
 cardBtn.addEventListener("click", () => {
   const val = dcSelect.options[dcSelect.selectedIndex].value;
@@ -123,8 +147,31 @@ cardBtn.addEventListener("click", () => {
   const paymentBtn = document.getElementById("payment-button");
   paymentBtn.appendChild(calBtn2);
   paymentBtn.removeChild(calBtn);
+  paymentCardSave();
 })
 
+function paymentCardSave() {
+  const req = {
+    method: cardBtn.id,
+    outTime: outTimeOutput.value,
+    dcSelect: dcSelect.options[dcSelect.selectedIndex].value,
+  }
+  console.log(req)
+  fetch("/paymentcard", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(req),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) console.log("OK");
+    })
+    .catch((err) => {
+      console.error("로그인 중 에러 발생");
+    });
+}
 
 function discount(val) {
   val = dcSelect.options[dcSelect.selectedIndex].value;
@@ -184,6 +231,9 @@ function paymentCash() {
   firstScroll.scrollIntoView({ behavior: "smooth" })
   result.innerHTML = "Payment"
   dcSelect.options[dcSelect.selectedIndex].value = "";
+
+  // console.log(val);
+
 }
 
 function paymentCard() {

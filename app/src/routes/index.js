@@ -15,6 +15,8 @@ router.post("/signup", ctrl.process.signUp);
 router.post("/outcarinfo", ctrl.process.outCarInfo);
 router.post("/outseasoncarinfo", ctrl.process.outSeasonCarInfo);
 router.post("/discount", ctrl.process.discount);
+router.post("/paymentcash", ctrl.process.paymentCashSave);
+router.post("/paymentcard", ctrl.process.paymentCardSave);
 
 
 

@@ -130,6 +130,28 @@ class User {
       return { success: false, msg: err }
     }
   }
+
+  async paymentCashSave() {
+    const client = this.body
+    console.log(client, "cash")
+    try {
+      const response = await UserStorage.paymentCashSave(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err }
+    }
+  }
+
+  async paymentCardSave() {
+    const client = this.body
+    console.log(client, "card")
+    try {
+      const response = await UserStorage.paymentCardSave(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err }
+    }
+  }
 }
 
 

@@ -55,6 +55,20 @@ const process = {
     return res.json(response);
   },
 
+  paymentCashSave: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.paymentCashSave();
+    console.log(response);
+    return res.json(response);
+  },
+
+  paymentCardSave: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.paymentCardSave();
+    console.log(response);
+    return res.json(response);
+  },
+
 };
 
 module.exports = {

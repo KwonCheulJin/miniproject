@@ -125,7 +125,42 @@ class UserStorage {
         });
     });
   }
+
+  static async paymentCashSave(code) {
+    const codeMethod = code.method;
+    const codeTime = moment(code.outTime).format("YYYY-MM-DD HH:mm:ss");
+    const codeValue = code.dcSelect;
+    console.log(codeMethod, codeTime, codeValue, "Cash")
+    return new Promise((resolve, reject) => {
+      const query = "INSERT INTO payment (payment_method, payment_time, discount_result )VALUES(?, ?, ?);";
+      db.query(
+        query,
+        [codeMethod, codeTime, codeValue],
+        (err) => {
+          if (err) reject("결제 중 오류");
+          resolve({ success: true });
+        });
+    });
+  }
+
+  static async paymentCardSave(code) {
+    const codeMethod = code.method;
+    const codeTime = moment(code.outTime).format("YYYY-MM-DD HH:mm:ss");
+    const codeValue = code.dcSelect;
+    console.log(codeMethod, codeTime, codeValue, "Card")
+    return new Promise((resolve, reject) => {
+      const query = "INSERT INTO payment (payment_method, payment_time, discount_result )VALUES(?, ?, ?);";
+      db.query(
+        query,
+        [codeMethod, codeTime, codeValue],
+        (err) => {
+          if (err) reject("결제 중 오류");
+          resolve({ success: true });
+        });
+    });
+  }
 }
+
 
 
 module.exports = UserStorage;
