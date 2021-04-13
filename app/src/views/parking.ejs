@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/queries.css">
     <script src="/js/parking.js" defer></script>
     <script src="/js/insert.js" defer></script>
-    <script src="/js/space.js" defer></script>
     <title>주차장 정산 프로그램</title>
   </head>
 
@@ -18,6 +17,9 @@
       <div id="first" class="section">
         <div class="signUp">
           <p id="open-signUp">SIGN UP</p>
+        </div>
+        <div class="out-car">
+          <p id="out-car">출차</p>
         </div>
         <div class="popup" id="popup-1">
           <div class="modal-overlay"></div>
@@ -43,17 +45,14 @@
         <div class="content">
           <h2>주차장 입구</h2>
           <div class="first-form">
-            <div class="parking-place">
-              <h3>주차여유공간</h3>
-              <p class="space-count"></p>
-            </div>
             <form class="car-num-form">
               <h3>차량번호입력</h3>
               <div class="inputBox">
                 <input id="car-number" type="text" placeholder="CarNumber">
               </div>
-              <div class="inputBox">
-                <p id="enter-button">등록</p>
+              <div id="enter" class="inputBox">
+                <p id="season-enter-button">정기권</p>
+                <p id="enter-button">일반</p>
               </div>
             </form>
           </div>
@@ -63,166 +62,11 @@
         <div class="content">
           <h2>주차 공간</h2>
           <div class="space">
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
-            <div>
-              <span></span>
-              <input type="button" value="입차">
-            </div>
+            <ul class="parking-space">
+            </ul>
+          </div>
+          <div class="in-car">
+            <p id="in-car">입차</p>
           </div>
         </div>
       </div>
@@ -236,12 +80,13 @@
                 <div class="out-car-number">
                   <p id="out-car-number">CarNumber</p>
                 </div>
-                <h3>출차시간입력</h3>
+                <h3>출차시간</h3>
                 <div class="inputBox">
                   <input id="out-time" type="datetime-local" placeholder="DateTime">
                 </div>
-                <div class="inputBox">
-                  <p id="next-button">다음</p>
+                <div id="out" class="inputBox">
+                  <p id="next-season-button">정기차</p>
+                  <p id="next-button">일반</p>
                 </div>
               </div>
             </div>
@@ -250,15 +95,19 @@
                 <h3>할인코드입력</h3>
                 <div class="inputBox">
                   <select id="discount" name="DC-code">
-                    <option value="">할인코드</option>
+                    <option value="" selected>할인코드</option>
                     <option value="nationalMerit">국가유공자</option>
                     <option value="disablePerson">장애인</option>
                     <option value="transfer">환승사용자</option>
                     <option value="market">전통시장이용</option>
                   </select>
                 </div>
-                <div class="inputBox">
-                  <p id="DC-button">등록</p>
+                <div class="payment-method">
+                  <h3>결제 방법</h3>
+                  <div id="payment-method" class="inputBox">
+                    <p id="cash">현금</p>
+                    <p id="credit-card">카드</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -268,13 +117,15 @@
                 <div class="payment-result">
                   <p id="result">Payment</p>
                 </div>
-                <div class="inputBox">
-                  <p id="cal-button">결제</p>
+                <div id="payment-button" class="inputBox">
+                  <p class="cal-button">결제</p>
+                  <p class="cal-button2">결제</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
   </body>
 
 </html>

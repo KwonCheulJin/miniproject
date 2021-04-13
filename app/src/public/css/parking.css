@@ -66,6 +66,31 @@
   right: 20px;
 }
 
+.out-car {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.out-car p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
 .signUp p {
   margin: 1rem auto;
   background: rgba(255, 255, 255, 0.2);
@@ -82,7 +107,8 @@
   cursor: pointer;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .popup.open .modal-overlay {
@@ -203,8 +229,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30rem;
-  min-height: 17.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 560px;
+  height: 430px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   backdrop-filter: blur(5px);
@@ -214,52 +243,19 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.parking-place {
-  margin-top: 30px;
-}
-
-.parking-place p {
-  position: relative;
-  width: 10rem;
-  margin: 1rem auto;
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  outline: none;
-  padding: 0.625rem 1.25rem;
-  border-radius: 35px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
 .car-num-form {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.parking-place h3,
-.car-num-form h3 {
-  position: relative;
-  margin-top: 1.25rem;
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .car-num-form .inputBox {
-  width: 100%;
-  margin-top: 1rem;
+  margin: 10px auto;
 }
 
 .car-num-form .inputBox input {
-  width: 15rem;
+  width: 200px;
   background: rgba(255, 255, 255, 0.2);
   border: none;
   outline: none;
@@ -271,6 +267,15 @@
   font-size: 20px;
 }
 
+.car-num-form h3 {
+  position: relative;
+  margin: 1.25rem auto;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 .car-num-form .inputBox input::placeholder {
   position: absolute;
   top: 8px;
@@ -279,6 +284,72 @@
 }
 
 .car-num-form .inputBox p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 30px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.car-num-form #enter {
+  display: flex;
+  width: 250px;
+}
+
+/*------- 주차 공간 ---------*/
+
+.space {
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 400px;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.space li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 24px;
+}
+
+.space li > button {
+  font-size: 16px;
+  width: 60px;
+  height: 30px;
+}
+
+.in-car {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.in-car p {
   margin: 1rem auto;
   background: rgba(255, 255, 255, 0.2);
   border: none;
@@ -294,41 +365,7 @@
   cursor: pointer;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 1.5rem;
-}
-
-/*------- 주차 공간 ---------*/
-
-.space {
-  overflow: scroll;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 80%;
-  height: 80vh;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.space div {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  width: 8.5rem;
-  height: 40px;
-  font-size: 16px;
-}
-
-.space .check {
-  width: 20px;
-  height: 16px;
+  font-size: 22px;
 }
 
 /*------- 주차장 출구 ---------*/
@@ -423,7 +460,7 @@
   background: rgba(255, 255, 255, 0.2);
   border: none;
   outline: none;
-  padding: 8px 8px;
+  padding: 10px 15px;
   border-radius: 35px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -479,4 +516,32 @@
   top: 8px;
   color: #ffffff;
   font-size: 22px;
+}
+
+.calculater #out {
+  display: flex;
+  width: 250px;
+}
+
+.payment-method #payment-method {
+  display: flex;
+  width: 200px;
+}
+
+.payment-result input {
+  position: relative;
+  width: 10rem;
+  margin: 1rem auto;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }

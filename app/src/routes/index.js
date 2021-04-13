@@ -10,8 +10,10 @@ const ctrl = require("./ctrl");
 router.get("/", ctrl.output.insert);
 
 router.post("/insert", ctrl.process.insert);
+router.post("/seasoninsert", ctrl.process.seasonInsert);
 router.post("/signup", ctrl.process.signUp);
-router.post("/out", ctrl.process.outCar);
+router.post("/outcarinfo", ctrl.process.outCarInfo);
+router.post("/outseasoncarinfo", ctrl.process.outSeasonCarInfo);
 router.post("/discount", ctrl.process.discount);
 
 
