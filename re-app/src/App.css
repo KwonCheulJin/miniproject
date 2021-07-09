@@ -1,38 +1,547 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+/*------- container ---------*/
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.container section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  background-blend-mode: multiply;
+}
+
+.container section:nth-child(1) {
+  background-image: url("../src/img/parking.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container section:nth-child(2) {
+  background-color: #a4a4a4;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container section:nth-child(3) {
+  background-image: url("../src/img/parking.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container section .content {
+  padding-top: 20px;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container section .content h2 {
+  color: #f5f5f5;
+  font-weight: 400;
+  font-size: 3rem;
+  display: inline-block;
+  padding: 10px 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*------- 정기권 등록창 ---------*/
+.signUp {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.out-car {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.out-car p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.signUp p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.popup.open .modal-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+}
+
+.popup .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -200%) scale(0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 999;
+}
+
+.popup .modal-content form {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup.open .modal-content {
+  transition: all 350ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  color: #ffff;
+  font-size: 30px;
+}
+
+.popup .close-btn:hover {
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  position: absolute;
+  top: 10%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.modal-content .inputBox {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.modal-content .inputBox input {
+  width: 15rem;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.modal-content .inputBox input::placeholder {
+  position: absolute;
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.modal-content .inputBox p {
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5rem;
+}
+/*------- 주차장 입구 ---------*/
+
+.first-form.hide {
+  display: none;
+}
+
+.first-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 560px;
+  height: 430px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.car-num-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.car-num-form .inputBox {
+  margin: 10px auto;
+}
+
+.car-num-form .inputBox input {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.car-num-form h3 {
+  position: relative;
+  margin: 1.25rem auto;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.car-num-form .inputBox input::placeholder {
+  position: absolute;
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.car-num-form .inputBox p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 30px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.car-num-form #enter {
+  display: flex;
+  width: 250px;
+}
+
+/*------- 주차 공간 ---------*/
+
+.space {
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 400px;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.space li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 24px;
+}
+
+.space li > button {
+  font-size: 16px;
+  width: 60px;
+  height: 30px;
+}
+
+.in-car {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.in-car p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+/*------- 주차장 출구 ---------*/
+
+.third-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ------- 화면 전환 -------- */
+.third-container .card:nth-child(2) {
+  display: none;
+}
+
+.third-container .card:nth-child(1).active {
+  display: none;
+}
+.third-container .card:nth-child(2).active {
+  display: flex;
+}
+
+.third-container .card:nth-child(3) {
+  display: none;
+}
+
+.third-container .card:nth-child(3).active2 {
+  display: flex;
+}
+
+/* ------- card css --------- */
+
+.third-container .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  min-height: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.payment,
+.calculater {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.payment .inputBox,
+.calculater .inputBox {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.payment .inputBox input,
+.calculater .inputBox input {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+}
+
+.payment .inputBox input::placeholder,
+.calculater .inputBox input::placeholder {
+  position: absolute;
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.payment .inputBox p,
+.calculater .inputBox p {
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000;
+  max-width: 6rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.payment .payment-result p,
+.calculater .out-car-number p {
+  position: relative;
+  width: 10rem;
+  margin: 1rem auto;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.payment h3,
+.calculater h3 {
+  position: relative;
+  margin-top: 1.25rem;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.calculater .inputBox select {
+  width: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  top: 8px;
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.calculater #out {
+  display: flex;
+  width: 250px;
+}
+
+.payment-method #payment-method {
+  display: flex;
+  width: 200px;
+}
+
+.payment-result input {
+  position: relative;
+  width: 10rem;
+  margin: 1rem auto;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
